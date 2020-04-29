@@ -44,7 +44,7 @@
 - javascript
 - MySQL 5.6.46
 - composer 1.10.1
-- Heroku
+- AWS
 - git
 
 ### 課題や今後実装したい機能
