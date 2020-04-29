@@ -64,7 +64,7 @@
 |password         |string   |null: false              |
 |email_verified_at|timestamp|null: false              |
 ### Association
-- has_many :folders
+- belong_to :shelf
 
 
 ## booksテーブル
