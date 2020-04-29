@@ -19,14 +19,14 @@
   
             <div id="menu" class="collapse navbar-collapse">
               <ul class="navbar-nav ">
-                <li class="nav-item"><a href="" class="nav-link text-white text-center ">新規登録</a></li>
-                <li class="nav-item"><a href="" class="nav-link text-white text-center ">ログイン</a></li>
-                <li class="nav-item"><a href="" class="nav-link text-white text-center ">ログアウト</a></li>
+                <li class="nav-item"><a href="" class="nav-link btn-dark text-white text-center ">新規登録</a></li>
+                <li class="nav-item"><a href="" class="nav-link btn-dark text-white text-center ">ログイン</a></li>
+                <li class="nav-item"><a href="" class="nav-link btn-dark text-white text-center ">ログアウト</a></li>
               </ul>
             </div>
           </nav>
   
-          <div class="px-5 py-5">
+          <div class="px-4 py-5">
             <a href="#" class="btn"> <h1 class="display-5 mb-4 text-white ">Book Management App</h1></a>
           </div>
         </div>
