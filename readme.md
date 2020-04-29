@@ -7,65 +7,87 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# About this application
+### 名称
+- Book Management App
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 概要
+- 本を登録し、それを自分の本棚に追加することで読み終わった本やこれから読みたい本を管理できるアプリです。
+- email, passward, nicknameを登録しユーザーログインすることで、これらの機能を利用することができます。
+- 本棚に登録した本の情報から、ユーザーがどんなジャンルの本を好み、どのくらい本を読んでいるかをプロフィールに表示されます。
+- プロフィールに表示された情報をTwitterで呟くことができます。
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### このアプリでできること
+- ユーザーログイン・ログアウト（ニックネーム・メールアドレス・パスワード）
+- 本を登録（タイトル・総巻数・画像）
+- 本を本棚に登録（ステータス・点数）
+- プロフィールに読んだ本のジャンル毎の数、総数、肩書きを表示
+- プロフィールの情報をTwitterに投稿
 
-## Learning Laravel
+### 本番環境
+- デプロイ先：AWS
+- URL：
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 制作背景(意図)
+- 漫画喫茶や本屋に行った際に、どの本を読みたいかを思い出させてくれるアプリが欲しいと思い作成しました。
+- また、"漫画が好き"というだけでは相手に何がどのくらい好きなのか伝わらないので、それを一目でわかるように視覚化したいと思いました。
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost you and your team's skills by digging into our comprehensive video library.
+### 工夫したポイント
+- 読んだ本の総数によってプロフィールの肩書きが変わることで、もっと本を読みたいと思わせるように設計
+- TwitterのAPIを実装
+- Bootstrapを使用してレスポンシブデザイン
 
-## Laravel Sponsors
+### 使用技術
+- Laravel 5.7.28
+- PHP 7.3.16
+- javascript
+- MySQL 5.6.46
+- composer 1.10.1
+- Heroku
+- git
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 課題や今後実装したい機能
+- 読んだ本の総数からユーザーランキングを表示する機能
+- ユーザーランキングから他ユーザーのプロフィールにアクセスできる機能
+- プロフィールから他ユーザーをフォローする機能
+- 相互フォロワーがメッセージのやり取りができる機能
+- dockerへの搭載
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
+### DB設計
 
-## Contributing
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|name             |string   |null: false, unique: true|
+|email            |string   |null: false, unique: true|
+|password         |string   |null: false              |
+|email_verified_at|timestamp|null: false              |
+### Association
+- has_many :folders
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Security Vulnerabilities
+## booksテーブル
+|Column|Type|Options|
+|------|----|-------|
+|title              |string   |null: false, unique: true|
+|amount             |integer  |null: false |
+|genre_num          |integer  |null: false |
+|created_at         |timestamp|null: false |
+|updated_at         |timestamp|null: false |
+### Association
+- belong_to :shelf
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
-
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## shelfsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|point        |integer    |null: false |
+|status_num   |integer    |null: false |
+|created_at   |timestamp  |null: false |
+|updated_at   |timestamp  |null: false |
+|user_id      |integer    |null: false, foreign_key: true |
+|book_id      |integer    |null: false, foreign_key: true |
+### Association
+- belong_to :user
+- has_many :books
