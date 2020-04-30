@@ -1,0 +1,49 @@
+
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css');
+
+.wrapper {
+  min-height: 700px;
+  background: url("../images/book.jpg");
+  background-size: cover;
+}
+footer{
+  height: 70px;
+}
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler{
+  background-color: #000000;
+}
+.init-contents {
+  height: calc(100% - 260px);
+}
+.shelf{
+  min-height: 450px;
+}
+thead, tbody {
+  display: block;
+}
+th, td {
+  width: 100vw;
+}
+tbody{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 230px;
+}
+.profile{
+  min-height: 478px;
+}
+.profile-img{
+  height: 200px;
+  width: 200px;
+}
+.new-edit-form{
+  min-height: 478px;
+}
+.book-img {
+  height: 250px;
+  width: 200px;
+}
