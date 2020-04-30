@@ -33,3 +33,17 @@ tbody{
   overflow-y: scroll;
   height: 230px;
 }
+.profile{
+  min-height: 478px;
+}
+.profile-img{
+  height: 200px;
+  width: 200px;
+}
+.new-edit-form{
+  min-height: 478px;
+}
+.book-img {
+  height: 250px;
+  width: 200px;
+}
