@@ -16,11 +16,13 @@
 
   <section class="shelf bg-light">
 
+
     <div class="input-group container pt-5 px-5 w-75">
       <input type="text" class="form-control" placeholder="テキスト入力欄">
       <span class="input-group-btn">
         <button type="submit" class="btn btn-default bg-dark text-white">検索</button>
       </span>
+      <a href="{{ route('books.create') }}" class="btn-sm btn-primary ml-4 pt-2">本を新規登録</a>
     </div>
 
     <div class="bg-light text-center py-5">
@@ -35,10 +37,10 @@
             @foreach($books as $book)
               <tr>
                 <td><button class="btn-sm btn-primary">追加</button></td>
-                <td><a  href="{{ route('books.index', ['id' => $book->id]) }}">{{ $book->title }}</a></td>
+                <td>{{ $book->title }}</td>
                 <td>{{ $book->genre_num }}</td>
                 <td>{{ $book->book_volume }}</td>     
-                <td><a href="#">編集</a></td>
+                <td><a href="{{ route('books.edit', ['id' => $book->id]) }}">編集</a></td>
               </tr>
             @endforeach
           </tbody>
