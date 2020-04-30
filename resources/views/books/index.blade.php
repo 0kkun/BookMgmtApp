@@ -32,27 +32,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><button class="btn-sm btn-primary">追加</button></td>
-              <td>ドラゴンボール</td>
-              <td>バトル</td>
-              <td>42巻</td>     
-              <td><a href="#">編集</a></td>
-            </tr>
-            <tr>
-              <td><button class="btn-sm btn-primary">追加</button></td>
-              <td>鬼滅の刃</td>
-              <td>バトル</td>
-              <td>42巻</td>   
-              <td><a href="#">編集</a></td>
-            </tr>
-            <tr>
-              <td><button class="btn-sm btn-primary">追加</button></td>
-              <td>NARUTO</td>
-              <td>バトル</td>
-              <td>42巻</td>   
-              <td><a href="#">編集</a></td>
-            </tr>
+            @foreach($books as $book)
+              <tr>
+                <td><button class="btn-sm btn-primary">追加</button></td>
+                <td><a  href="{{ route('books.index', ['id' => $book->id]) }}">{{ $book->title }}</a></td>
+                <td>{{ $book->genre_num }}</td>
+                <td>{{ $book->book_volume }}</td>     
+                <td><a href="#">編集</a></td>
+              </tr>
+            @endforeach
           </tbody>
         </table>
       </div>
