@@ -16,21 +16,21 @@ class BooksTableSeeder extends Seeder
         DB::table('books')->insert([
             [
                 'title' => 'ドラゴンボール',
-                'genre_num' => 1,
+                'genre' => 1,
                 'book_volume' => 42,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'title' => 'Dr.スランプ アラレちゃん',
-                'genre_num' => 2,
+                'genre' => 2,
                 'book_volume' => 18,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'title' => '名探偵コナン',
-                'genre_num' => 3,
+                'genre' => 3,
                 'book_volume' => 100,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
