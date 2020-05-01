@@ -12,6 +12,7 @@ class BookController extends Controller
 
 
 
+    // book一覧表示
     public function index()
     {
         $books = Book::all();
@@ -24,7 +25,7 @@ class BookController extends Controller
 
 
 
-    // 新規作成画面表示
+    // book新規作成画面表示
     public function showCreateForm()
     {
         return view('books/create');
@@ -35,7 +36,7 @@ class BookController extends Controller
 
 
 
-    // 新規作成
+    // book新規作成処理
     public function create(CreateBook $request)
     {
         $book = new Book();
@@ -55,7 +56,7 @@ class BookController extends Controller
 
 
 
-    // 編集画面表示
+    // book編集画面表示
     public function showEditForm(int $id)
     {
         $book = Book::find($id);
@@ -68,25 +69,17 @@ class BookController extends Controller
 
 
 
-    // 編集処理
+    // book編集処理
     public function edit(int $id, EditBook $request)
     {
-        // 1
         $book = Book::find($id);
 
-        // 2
         $book->title = $request->title;
         $book->genre = $request->genre;
         $book->book_volume = $request->book_volume;
 
         $book->save();
 
-        // 3
-        // $books = Book::all();
-        // return view('books/index', [
-        //     'books' => $books,
-        // ]);
-        // return redirect()->route('books', [$books]);
         return redirect()->action('BookController@index');
     }
 }
