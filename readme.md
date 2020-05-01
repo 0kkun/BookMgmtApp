@@ -67,7 +67,7 @@ https://gyazo.com/dffab108ef4533898670abb269c81a40
 |password         |string   |null: false              |
 |email_verified_at|timestamp|null: false              |
 ### Association
-- belong_to :shelf
+- has_one :shelf
 
 
 ## booksテーブル

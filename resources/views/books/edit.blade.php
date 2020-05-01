@@ -66,7 +66,7 @@
               <div class="text-right">
                 <form method="post" action="/book/delete/{{$book->id}}">
                   {{ csrf_field() }}
-                  <input type="submit" value="削除" class="btn btn-danger btn" onclick='return confirm("本当に削除しますか？");'>
+                  <input type="submit" value="削除" class="btn btn-danger btn mb-3" onclick='return confirm("本当に削除しますか？");'>
                 </form>
               </div>
             </div>
