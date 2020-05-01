@@ -14,19 +14,20 @@
     </div>
   </section>
   
-  <!------------- エラー処理 ----------------->
-  @if($errors->any())
-    <div class="alert alert-danger">
-      <ul>
-        @foreach($errors->all() as $message)
-          <li>{{ $message }}</li>
-        @endforeach
-      </ul>
-    </div>
-  @endif
-  <!---------------------------------------->
+
 
   <section class="new-edit-form bg-light">
+    <!------------- エラー処理 ----------------->
+    @if($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach($errors->all() as $message)
+            <li>{{ $message }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
+    <!---------------------------------------->
     <div class="container">
       <div class="row">
         <div class="col-sm-3 text-center">

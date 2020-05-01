@@ -35,7 +35,7 @@ class BookController extends Controller
 
 
     // 新規作成
-    public function create(Request $request)
+    public function create(CreateBook $request)
     {
         $book = new Book();
         $book->title = $request->title;

@@ -25,8 +25,28 @@ class CreateBook extends FormRequest
     {
         return [
             'title' => 'required|max:30',
-            'genre' => 'requierd',
-            'book_volume' => 'requierd',
+            'title' => 'unique:books,title',
+            'genre' => 'not_in: 0',
+            'book_volume' => 'required | integer | between:1,1000',
+        ];
+    }
+
+
+
+    public function attributes()
+    {
+        return [
+            'title' => 'タイトル',
+            'genre' => 'ジャンル',
+            'book_volume' => '総巻数',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'genre.not_in' => 'ジャンルが選択されていません。',
         ];
     }
 }
+
