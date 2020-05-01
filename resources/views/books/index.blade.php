@@ -38,7 +38,7 @@
               <tr>
                 <td><button class="btn-sm btn-primary">追加</button></td>
                 <td>{{ $book->title }}</td>
-                <td><span>{{ $book->genre_label }}</span></td>
+                <td>{{ $book->genre_label }}</td>
                 <td>{{ $book->book_volume }}</td>     
                 <td><a href="{{ route('books.edit', ['id' => $book->id]) }}">編集</a></td>
               </tr>
