@@ -30,7 +30,7 @@
         <table class="table table-hover table-striped ">
           <thead>
             <tr>
-              <th>追加</th><th>タイトル</th><th>カテゴリー</th><th>総巻数</th><th>編集</th>
+              <th>追加</th><th>タイトル</th><th>ジャンル</th><th>総巻数</th><th>編集</th>
             </tr>
           </thead>
           <tbody>
