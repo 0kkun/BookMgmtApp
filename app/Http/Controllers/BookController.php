@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateBook;
+use App\Http\Requests\EditBook;
 
 class BookController extends Controller
 {
@@ -54,34 +55,38 @@ class BookController extends Controller
 
 
 
-    // // 編集画面表示
-    // public function showEditForm(int $id)
-    // {
-    //     $book = Book::find($id);
+    // 編集画面表示
+    public function showEditForm(int $id)
+    {
+        $book = Book::find($id);
     
-    //     return view('books/edit', [
-    //         'book' => $book,
-    //     ]);
-    // }
+        return view('books/edit', [
+            'book' => $book,
+        ]);
+    }
 
 
 
 
-    // // 編集処理
-    // public function edit(int $id)
-    // {
-    //     // 1
-    //     $book = Book::find($id);
+    // 編集処理
+    public function edit(int $id, EditBook $request)
+    {
+        // 1
+        $book = Book::find($id);
 
-    //     // 2
-    //     $book->title = $request->title;
-    //     $task->status = $request->status;
-    //     $task->due_date = $request->due_date;
-    //     $task->save();
+        // 2
+        $book->title = $request->title;
+        $book->genre = $request->genre;
+        $book->book_volume = $request->book_volume;
 
-    //     // 3
-    //     return redirect()->route('tasks.index', [
-    //         'id' => $task->folder_id,
-    //     ]);
-    // }
+        $book->save();
+
+        // 3
+        // $books = Book::all();
+        // return view('books/index', [
+        //     'books' => $books,
+        // ]);
+        // return redirect()->route('books', [$books]);
+        return redirect()->action('BookController@index');
+    }
 }

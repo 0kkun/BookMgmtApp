@@ -25,7 +25,6 @@ class CreateBook extends FormRequest
     {
         return [
             'title' => 'required|max:30',
-            'title' => 'unique:books,title',
             'genre' => 'not_in: 0',
             'book_volume' => 'required | integer | between:1,1000',
         ];
