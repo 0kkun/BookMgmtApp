@@ -38,7 +38,9 @@
               <tr>
                 <td><button class="btn-sm btn-primary">追加</button></td>
                 <td>{{ $book->title }}</td>
-                <td>{{ $book->genre_num }}</td>
+                <!-- <td>{{ $book->genre }}</td> -->
+                <!-- <td><span class="genre">{{ $book->genre }}</span></td> -->
+                <td><span>{{ $book->genre_label }}</span></td>
                 <td>{{ $book->book_volume }}</td>     
                 <td><a href="{{ route('books.edit', ['id' => $book->id]) }}">編集</a></td>
               </tr>

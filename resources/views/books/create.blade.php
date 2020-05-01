@@ -55,7 +55,7 @@
                   <select name="genre" id="genre" class="form-control mb-2">
                     @foreach(\App\Book::GENRE as $key => $val)
                       <option value="{{$key}}">
-                        {{ $val['genre'] }}
+                        {{ $val['label'] }}
                       </option>
                     @endforeach
                   </select>
