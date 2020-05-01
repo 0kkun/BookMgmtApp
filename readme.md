@@ -14,7 +14,7 @@
 
 ### 概要
 - 本を登録し、それを自分の本棚に追加することで読み終わった本やこれから読みたい本を管理できるアプリです。
-- email, passward, nicknameを登録しユーザーログインすることで、これらの機能を利用することができます。
+- email, passward, nameを登録しユーザーログインすることで、これらの機能を利用することができます。
 - 本棚に登録した本の情報から、ユーザーがどんなジャンルの本を好み、どのくらい本を読んでいるかをプロフィールに表示されます。
 - プロフィールに表示された情報をTwitterで呟くことができます。
 
@@ -56,6 +56,9 @@
 
 ### DB設計
 
+## ER図
+https://gyazo.com/dffab108ef4533898670abb269c81a40
+
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -71,8 +74,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |title              |string   |null: false, unique: true|
-|amount             |integer  |null: false |
-|genre_num          |integer  |null: false |
+|book_volume        |integer  |null: false |
+|genre              |integer  |null: false |
 |created_at         |timestamp|null: false |
 |updated_at         |timestamp|null: false |
 ### Association
@@ -83,7 +86,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |point        |integer    |null: false |
-|status_num   |integer    |null: false |
+|status       |integer    |null: false |
 |created_at   |timestamp  |null: false |
 |updated_at   |timestamp  |null: false |
 |user_id      |integer    |null: false, foreign_key: true |
