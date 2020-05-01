@@ -6,29 +6,45 @@ use App\Book;
 use Illuminate\Validation\Rule;
 
 
-
-
-class EditBook extends FormRequest
+class EditBook extends CreateBook
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return false;
-    }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
-        return [
-            //
+        $rule = parent::rules();
+
+        $genre_rule = Rule::in(array_keys(Book::GENRE));
+
+        return $rule + [
+            'genre' => 'required|' . $genre_rule,
+        ];
+    }
+
+
+    public function attributes()
+    {
+        $attributes = parent::attributes();
+
+        return $attributes + [
+            'genre' => 'ジャンル',
+        ];
+    }
+
+
+
+
+    public function messages()
+    {
+        $messages = parent::messages();
+
+        $genre_labels = array_map(function($item) {
+            return $item['label'];
+        }, Book::GENRE);
+
+        $genre_labels = implode('、', $genre_labels);
+
+        return $messages + [
+            'genre.in' => ':attribute にはいずれかを指定してください。',
         ];
     }
 }
