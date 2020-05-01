@@ -10,5 +10,5 @@ Route::get('/books/create', 'BookController@showCreateForm')->name('books.create
 Route::post('/books/create', 'BookController@create');
 
 
-// Route::get('/books/{id}/edit', 'BookController@showEditForm')->name('books.edit');
-// Route::post('/books/{id}/edit', 'BookController@edit');
+Route::get('/books/{id}/edit', 'BookController@showEditForm')->name('books.edit');
+Route::post('/books/{id}/edit', 'BookController@edit');
