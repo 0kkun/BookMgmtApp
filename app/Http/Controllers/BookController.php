@@ -15,10 +15,7 @@ class BookController extends Controller
     {
         $books = Book::all();
 
-        // view(表示するview, [view側で参照する際の変数名, 渡す配列])
-        return view('books/index', [
-            'books' => $books,
-        ]);
+        return view('books/index', compact('books'));
     }
 
 
@@ -46,9 +43,7 @@ class BookController extends Controller
 
         $books = Book::all();
     
-        return view('books/index', [
-            'books' => $books,
-        ]);
+        return view('books/index', compact('books'));
     }
 
 
@@ -59,9 +54,7 @@ class BookController extends Controller
     {
         $book = Book::find($id);
     
-        return view('books/edit', [
-            'book' => $book,
-        ]);
+        return view('books/edit', compact('book'));
     }
 
 

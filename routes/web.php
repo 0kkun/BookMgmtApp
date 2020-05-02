@@ -20,6 +20,9 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/user/{user}', 'UserController@show')->name('user.show');
     Route::get('/users/{id}', 'UserController@showProfile')->name('users.show');
+
+    Route::get('/books/{id}/shelfs/create', 'ShelfController@showCreateForm')->name('shelfs.create');
+    Route::post('/books/{id}/shelfs/create', 'ShelfController@create');
 });
 
 Auth::routes();
