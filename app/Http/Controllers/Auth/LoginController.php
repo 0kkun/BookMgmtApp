@@ -27,7 +27,6 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = "/";
 
     protected function redirectTo() {
         if(! Auth::user()) {
@@ -36,12 +35,6 @@ class LoginController extends Controller
         return route('users.show', ['user' => Auth::id()]);
      }
 
-
-    // protected function authenticated(\Illuminate\Http\Request $request, $user)
-    // {
-    //     // ログイン後のリダイレクト
-    //     return redirect()->action('UserController@showProfile');
-    // }
     /**
      * Create a new controller instance.
      *

@@ -29,7 +29,6 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = '/';
 
     protected function redirectTo() {
         if(! Auth::user()) {
