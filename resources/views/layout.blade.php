@@ -18,16 +18,28 @@
             </button>
   
             <div id="menu" class="collapse navbar-collapse">
-              <ul class="navbar-nav ">
-                <li class="nav-item"><a href="" class="nav-link btn-dark text-white text-center ">新規登録</a></li>
-                <li class="nav-item"><a href="" class="nav-link btn-dark text-white text-center ">ログイン</a></li>
-                <li class="nav-item"><a href="" class="nav-link btn-dark text-white text-center ">ログアウト</a></li>
+              @if(Auth::check())
+                <span class="my-navbar-item mr-3 font-weight-bold">ようこそ, {{ Auth::user()->name }}さん</span>
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a href="#" id="logout" class="nav-link btn-dark text-white text-center ">ログアウト</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      @csrf
+                    </form>
+                  </li>
+                </ul>
+              @else
+                <ul class="navbar-nav">
+                  <li class="nav-item"><a href="{{ route('register') }}" class="nav-link btn-dark text-white text-center ">新規登録</a></li>
+                  <li class="nav-item"><a href="{{ route('login') }}"    class="nav-link btn-dark text-white text-center ">ログイン</a></li>
+                </ul>
+              @endif
               </ul>
             </div>
           </nav>
-  
+
           <div class="px-4 py-5">
-            <a href="#" class="btn"> <h1 class="display-5 mb-4 text-white ">Book Management App</h1></a>
+            <a href="/" class="btn"> <h1 class="display-5 mb-4 text-white ">Book Management App</h1></a>
           </div>
         </div>
       </header>
@@ -47,6 +59,18 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    @if(Auth::check())
+      <script>
+        // ログアウトリンクのクリックイベントで、リンクの下に置いたフォームを送信
+        document.getElementById('logout').addEventListener('click', function(event) {
+          event.preventDefault();
+          document.getElementById('logout-form').submit();
+        });
+      </script>
+    @endif
+
+    @yield('scripts')
 
   </body>
 </html>
