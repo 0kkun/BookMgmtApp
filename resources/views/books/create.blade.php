@@ -3,11 +3,13 @@
 
 @section('content')
   <section>
-    <div>
-      <div class="row">
-        <div class="col-4 text-center bg-dark pt-2"><a class="text-white" href="/users/{{ Auth::user()->id }}"><h5>Profile</h5></a></div>
-        <div class="col-4 text-center bg-dark pt-2"><a class="text-white" href="#"><h5>My Shelf</h5></a></div>
-        <div class="col-4 text-center pt-2 bg-primary"><a class="text-white" href="/books"><h5>Search</h5></a></div>
+    <div class="bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col-4 text-center pt-2"><a class="text-white" href="#"><h5>Profile</h5></a></div>
+          <div class="col-4 text-center pt-2"><a class="text-white" href="#"><h5>My Shelf</h5></a></div>
+          <div class="col-4 text-center pt-2"><a class="text-white" href="#"><h5>Search</h5></a></div>
+        </div>
       </div>
     </div>
   </section>

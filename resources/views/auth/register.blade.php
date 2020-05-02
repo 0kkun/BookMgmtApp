@@ -36,9 +36,6 @@
                 <button type="submit" class="btn btn-primary mb-3">送信</button>
               </div>
             </form>
-            <div>
-              <h5 class="text-white">* 既にアカウント作成済みの場合は<a href="{{ route('login') }}" >コチラ</a>
-            </div>
           </div>
         </nav>
       </div>

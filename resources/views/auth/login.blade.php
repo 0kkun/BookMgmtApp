@@ -30,9 +30,6 @@
             </form>
           </div>
         </nav>
-        <div>
-          <h5 class="text-white">* アカウントをお持ちでない方は<a href="{{ route('register') }}" >コチラ</a>
-        </div>
         <!-- <div class="text-center">
           <a href="{{ route('password.request') }}">パスワードの変更はこちらから</a>
         </div> -->

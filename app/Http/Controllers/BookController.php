@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Book;
-
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateBook;
 use App\Http\Requests\EditBook;
 
 class BookController extends Controller
 {
+
+
+
     // book一覧表示
     public function index()
     {
@@ -82,7 +84,7 @@ class BookController extends Controller
     }
 
 
-    // book削除処理
+
     public function delete (Request $request)
     {
         Book::find($request->id)->delete();
