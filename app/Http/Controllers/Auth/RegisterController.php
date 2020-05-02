@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +29,14 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    // protected $redirectTo = '/';
+
+    protected function redirectTo() {
+        if(! Auth::user()) {
+             return '/';
+        }
+        return route('users.show', ['user' => Auth::id()]);
+     }
 
     /**
      * Create a new controller instance.
