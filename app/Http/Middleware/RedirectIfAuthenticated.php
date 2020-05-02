@@ -5,6 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
+// 認証「されていない」ことを確かめるミドルウェア
+// ユーザーが認証済みの場合はコントローラーなどの後続のプログラムに処理を渡さずにリダイレクト
 class RedirectIfAuthenticated
 {
     /**
@@ -18,7 +20,7 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            return redirect('/');
         }
 
         return $next($request);

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -25,8 +27,21 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    // protected $redirectTo = "/";
 
+    protected function redirectTo() {
+        if(! Auth::user()) {
+             return '/';
+        }
+        return route('users.show', ['user' => Auth::id()]);
+     }
+
+
+    // protected function authenticated(\Illuminate\Http\Request $request, $user)
+    // {
+    //     // ログイン後のリダイレクト
+    //     return redirect()->action('UserController@showProfile');
+    // }
     /**
      * Create a new controller instance.
      *
