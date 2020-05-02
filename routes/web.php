@@ -14,3 +14,5 @@ Route::get('/books/{id}/edit', 'BookController@showEditForm')->name('books.edit'
 Route::post('/books/{id}/edit', 'BookController@edit');
 
 Route::post('/book/delete/{id}', 'BookController@delete');
+
+Auth::routes();
