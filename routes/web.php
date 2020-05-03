@@ -18,8 +18,18 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::post('/book/delete/{id}', 'BookController@delete');
 
-    Route::get('/user/{user}', 'UserController@show')->name('user.show');
     Route::get('/users/{id}', 'UserController@showProfile')->name('users.show');
+
+    Route::get('/shelfs', 'ShelfController@index')->name('shelfs.index');
+
+    Route::get('/books/{book}/shelfs/create', 'ShelfController@create')->name('shelfs.create');
+    Route::post('/books/{book}/shelfs/create', 'ShelfController@store');
+
+    Route::get('/books/{book}/shelfs/{shelf}/edit', 'ShelfController@edit')->name('shelfs.edit');
+    Route::post('/books/{book}/shelfs/{shelf}/edit', 'ShelfController@update');
+
+    Route::post('/shelf/delete/{id}', 'ShelfController@delete');
 });
+
 
 Auth::routes();
