@@ -25,46 +25,29 @@
       <div class="container shelf-table">
         <table class="table table-hover table-striped">
 
-          @foreach ($shelfs as $shelf) {
-            {{ $shelf->book->title }}
-          }@endforeach
-
           <!-- $comment->post->title; -->
           <thead>
             <tr>
-              <th>タイトル</th><th>ステータス</th><th>編集</th>
+              <th>タイトル</th>
+              <th>評価</th>
+              <th>完了 / 総数</th>
+              <th>ステータス</th>
+              <th>編集</th>
             </tr>
           </thead>
           <tbody>
-          @foreach ($shelfs as $shelf) {
+          @foreach ($shelfs as $shelf) 
             <tr>
               <td>{{ $shelf->book->title }}</td>
-              <td>{{ $shelf->status}}</td>
+              <td>{{ $shelf->point}}</td>
+              <td>{{ $shelf->finished_amount }} / {{$shelf->book->book_volume}}</td>
+              <td>{{ $shelf->status_label }}</td>
               <td><a href="#">編集</a></td>
             </tr>
           @endforeach
-            <tr>
-              <td>鬼滅の刃</td>
-              <td>これから読みたい</td>
-              <td><a href="#">編集</a></td>
-            </tr>
-            <tr>
-              <td>NARUTO</td>
-              <td>読んでいる途中</td>
-              <td><a href="#">編集</a></td>
-            </tr>
-            <tr>
-              <td>ワンピース</td>
-              <td>読んでいる途中</td>
-              <td><a href="#">編集</a></td>
-            </tr>
-            <tr>
-              <td>タッチ</td>
-              <td>読み終わった</td>
-              <td><a href="#">編集</a></td>
-            </tr>
           </tbody>
         </table>
+        {{ $shelfs->links() }}
       </div>
     </div>
   </section>
