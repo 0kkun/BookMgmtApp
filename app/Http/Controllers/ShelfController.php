@@ -11,7 +11,7 @@ class ShelfController extends Controller
     public function index(Shelf $shelf, Book $book)
     {
 
-        $shelfs = Shelf::all();
+        $shelfs = Shelf::orderBy('id', 'desc')->paginate(10);
         $books = Book::all();
 
         return view('shelfs/index', [
