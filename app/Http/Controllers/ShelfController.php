@@ -6,6 +6,7 @@ use App\Shelf;
 use App\Book;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateShelf;
+use App\Http\Requests\EditShelf;
 
 class ShelfController extends Controller
 {
@@ -36,6 +37,7 @@ class ShelfController extends Controller
     }
 
 
+    // shelf新規作成
     public function store(Book $book, CreateShelf $request)
     {
         $shelf = new Shelf();
@@ -51,5 +53,44 @@ class ShelfController extends Controller
         return redirect()->route('shelfs.index');
     }
 
+
+
+    // GET /folders/{id}/tasks/{task_id}/edit
+    public function edit(Book $book, Shelf $shelf)
+    {
+
+        $this->checkRelation($book, $shelf);
+
+        return view('shelfs/edit', [
+            'shelf' => $shelf,
+            'book' => $book,
+        ]);
+    }
+
+
+
+    // shelf編集機能
+    public function update(Book $book, Shelf $shelf, EditShelf $request)
+    {
+        $this->checkRelation($book, $shelf);
+
+        $shelf->status = $request->status;
+        $shelf->finished_amount = $request->finished_amount;
+        $shelf->point = $request->point;
+        $shelf->save();
+
+        return redirect()->route('shelfs.index');
+    }
+
+
+
+
+    // エラーハンドリング用のメソッド
+    private function checkRelation(Book $book, Shelf $shelf)
+    {
+        if ($book->id !== $shelf->book_id) {
+            abort(404);
+        }
+    }
 
 }

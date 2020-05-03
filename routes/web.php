@@ -25,6 +25,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/books/{book}/shelfs/create', 'ShelfController@create')->name('shelfs.create');
     Route::post('/books/{book}/shelfs/create', 'ShelfController@store');
 
+    Route::get('/books/{book}/shelfs/{shelf}/edit', 'ShelfController@edit')->name('shelfs.edit');
+    Route::post('/books/{book}/shelfs/{shelf}/edit', 'ShelfController@update');
 });
 
 

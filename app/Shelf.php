@@ -17,9 +17,7 @@ class Shelf extends Model
 
     public function book()
     {
-
         return $this->belongsTo('App\Book');
-
     }
 
     public function getStatusLabelAttribute()
