@@ -27,6 +27,8 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/books/{book}/shelfs/{shelf}/edit', 'ShelfController@edit')->name('shelfs.edit');
     Route::post('/books/{book}/shelfs/{shelf}/edit', 'ShelfController@update');
+
+    Route::post('/shelf/delete/{id}', 'ShelfController@delete');
 });
 
 

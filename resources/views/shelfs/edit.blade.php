@@ -59,17 +59,17 @@
 
                   <input type="number" class="form-control" name="point" id="point" value="{{ old('point') ?? $shelf->point }}" />
 
-                  <div class="text-right">
+                  <div class="text-right mb-2">
                     <button type="submit" class="btn mt-5 btn-success">編集保存</button>
                   </div>
-                  <div class="text-right">
+                </div>
+              </form>
+              <div class="text-right">
                     <form method="post" action="/shelf/delete/{{$shelf->id}}">
                       {{ csrf_field() }}
                       <input type="submit" value="削除" class="btn btn-danger btn mb-3" onclick='return confirm("本当に削除しますか？");'>
                     </form>
-                  </div>
-                </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>

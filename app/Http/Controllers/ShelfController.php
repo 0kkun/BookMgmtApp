@@ -93,4 +93,14 @@ class ShelfController extends Controller
         }
     }
 
+
+
+    // book削除処理
+    public function delete (Request $request)
+    {
+        // Shelf::find($request->id)->delete();
+        Shelf::destroy($request->id);
+        return redirect()->route('shelfs.index');
+    }
+
 }
