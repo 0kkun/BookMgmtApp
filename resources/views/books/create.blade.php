@@ -34,7 +34,7 @@
             </span>
           </label>
         </div>
-        <div class="col-sm-9 pt-4">
+        <div class="col-sm-9 pt-5">
           <div class="row">
             <div class="col-6 font-weight-bold text-right">
               <p class="pt-2">タイトル：</p>

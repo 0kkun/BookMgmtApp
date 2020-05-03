@@ -47,3 +47,10 @@ tbody{
   height: 250px;
   width: 200px;
 }
+
+@media screen and (min-width:781px){
+  .search-box {
+    max-width: 75%;
+  }
+}
+  

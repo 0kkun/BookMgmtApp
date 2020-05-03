@@ -12,14 +12,14 @@
 
 
   <section class="shelf bg-light">
-    <div class="input-group container pt-5 px-5 w-75">
+    <div class="input-group  container-fluid pt-5 px-sm-5 search-box">
       <input type="text" class="form-control" placeholder="テキスト入力欄">
       <span class="input-group-btn">
         <button type="submit" class="btn btn-default bg-dark text-white">検索</button>
       </span>
     </div>
 
-    <div class="bg-light text-center py-5">
+    <div class="bg-light text-center pt-4 pb-3">
       <div class="container shelf-table">
         <table class="table table-hover table-striped">
 
