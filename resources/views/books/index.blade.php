@@ -27,14 +27,14 @@
       <div class="container shelf-table">
         <table class="table table-hover table-striped ">
           <thead>
-            <tr>
+            <tr class= "bg-secondary text-white">
               <th>追加</th><th>タイトル</th><th>ジャンル</th><th>総巻数</th><th>編集</th>
             </tr>
           </thead>
           <tbody>
             @foreach($books as $book)
               <tr>
-                <td><button class="btn-sm btn-primary">追加</button></td>
+                <td><a href="{{ route('shelfs.create', ['id' => $book->id]) }}" class="btn-sm btn-primary">追加</a></td>
                 <td>{{ $book->title }}</td>
                 <td>{{ $book->genre_label }}</td>
                 <td>{{ $book->book_volume }}</td>     

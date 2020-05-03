@@ -21,6 +21,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/users/{id}', 'UserController@showProfile')->name('users.show');
 
     Route::get('/shelfs', 'ShelfController@index')->name('shelfs.index');
+
+    Route::get('/books/{book}/shelfs/create', 'ShelfController@create')->name('shelfs.create');
+    Route::post('/books/{book}/shelfs/create', 'ShelfController@store');
+
 });
 
 

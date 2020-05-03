@@ -27,7 +27,7 @@
 
           <!-- $comment->post->title; -->
           <thead>
-            <tr>
+            <tr class= "bg-secondary text-white" >
               <th>タイトル</th>
               <th>評価</th>
               <th>完了 / 総数</th>
