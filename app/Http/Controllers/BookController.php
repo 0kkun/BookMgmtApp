@@ -13,7 +13,7 @@ class BookController extends Controller
     // book一覧表示
     public function index()
     {
-        $books = Book::all();
+        $books = Book::orderBy('id', 'desc')->paginate(10);
 
         return view('books/index', compact('books'));
     }
@@ -40,10 +40,8 @@ class BookController extends Controller
         $book->book_volume = $request->book_volume;
 
         $book->save();
-
-        $books = Book::all();
     
-        return view('books/index', compact('books'));
+        return redirect()->route('books.index');
     }
 
 
@@ -71,7 +69,7 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect()->action('BookController@index');
+        return redirect()->route('books.index');
     }
 
 
@@ -79,6 +77,6 @@ class BookController extends Controller
     public function delete (Request $request)
     {
         Book::find($request->id)->delete();
-        return redirect()->action('BookController@index');
+        return redirect()->route('books.index');
     }
 }
