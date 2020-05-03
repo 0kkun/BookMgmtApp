@@ -3,13 +3,11 @@
 @extends('layout')
 
 @section('content')
-  <section>
-    <div>
-      <div class="row">
-        <div class="col-4 text-center bg-dark pt-2"><a class="text-white" href="/users/{{ Auth::user()->id }}"><h5>Profile</h5></a></div>
-        <div class="col-4 text-center bg-primary pt-2"><a class="text-white" href="/shelfs"><h5>My Shelf</h5></a></div>
-        <div class="col-4 text-center pt-2 bg-dark"><a class="text-white" href="/books"><h5>Search</h5></a></div>
-      </div>
+  <section class="bg-dark container-fluid">
+    <div class="row text-center bg-dark">
+      <div class="col-4 pt-2 pb-2"><a class="text-white h5" href="/users/{{ Auth::user()->id }}">Profile</a></div>
+      <div class="col-4 pt-2 pb-2 bg-primary"><a class="text-white h5" href="/shelfs">My Shelf</a></div>
+      <div class="col-4 pt-2 pb-2"><a class="text-white h5" href="/books">Search</a></div>
     </div>
   </section>
 
@@ -25,7 +23,7 @@
       </div>
     @endif
     <!---------------------------------------->
-    <h2 class="text-center text-primary p-4">本棚へ追加</h2>
+    <h2 class="text-center text-primary pt-4">本棚へ追加</h2>
     <div class="container">
       <div class="row">
         <div class="col-sm-3 text-center">
@@ -63,6 +61,12 @@
 
                   <div class="text-right">
                     <button type="submit" class="btn mt-5 btn-success">編集保存</button>
+                  </div>
+                  <div class="text-right">
+                    <form method="post" action="/shelf/delete/{{$shelf->id}}">
+                      {{ csrf_field() }}
+                      <input type="submit" value="削除" class="btn btn-danger btn mb-3" onclick='return confirm("本当に削除しますか？");'>
+                    </form>
                   </div>
                 </div>
               </form>

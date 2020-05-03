@@ -2,18 +2,17 @@
 @extends('layout')
 
 @section('content')
-  <section>
-    <div>
-      <div class="row">
-        <div class="col-4 text-center bg-primary pt-2"><a class="text-white" href="/users/{{$user->id}}"><h5>Profile</h5></a></div>
-        <div class="col-4 text-center bg-dark pt-2"><a class="text-white" href="/shelfs"><h5>My Shelf</h5></a></div>
-        <div class="col-4 text-center bg-dark pt-2"><a class="text-white" href="/books"><h5>Search</h5></a></div>
-      </div>
+
+  <section class="bg-dark container-fluid">
+    <div class="row text-center bg-dark">
+      <div class="col-4 pt-2 pb-2 bg-primary"><a class="text-white h5" href="/users/{{ Auth::user()->id }}">Profile</a></div>
+      <div class="col-4 pt-2 pb-2"><a class="text-white h5" href="/shelfs">My Shelf</a></div>
+      <div class="col-4 pt-2 pb-2"><a class="text-white h5" href="/books">Search</a></div>
     </div>
   </section>
 
 
-  <section class="profile bg-light">
+  <section class="profile bg-light container-fluid">
     <div class="row">
       <div class="col-sm-6 text-center">
         <img src="img/phone.png" class="profile-img mt-5 rounded-circle">
@@ -22,7 +21,7 @@
         <div class="pt-4 text-primary">フォロー：８ </div>
         <div class="text-primary">フォワー：16 </div>
       </div>
-      <div class="col-sm-6 pt-3 text-center">
+      <div class="col-sm-6 text-center">
         <span>あなたは・・・</span>
         <span class="display-4">ガチオタ！</span>
 
