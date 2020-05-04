@@ -43,14 +43,14 @@
         <!-- <img src="img/phone.png" class="profile-img mt-5 rounded-circle"> -->
         <form method="POST" action="/users" enctype="multipart/form-data">
           {{ csrf_field() }}
-          <label class="btn btn-primary">
+          <label class="btn btn-primary submit-label">
             ファイルを選択
             <input type="file" name="photo">
           </label>
-          <label class="btn btn-primary ml-3">
+          <label class="btn btn-primary ml-3 submit-label">
             送信
             <input type="submit">
-          </label>  
+          </label>
         </form>
 
         <div class="pt-3">ユーザー名：{{ Auth::user()->name }} </div>
