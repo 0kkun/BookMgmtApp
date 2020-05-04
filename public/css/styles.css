@@ -53,9 +53,12 @@ tbody{
 label > input {
   display:none; 
   }
-label {
+.submit-label {
 padding: 10px; 
-border: double 4px #AAAAAA;
+}
+.no-image {
+  width: 280px;
+  height: 300px;
 }
 
 @media screen and (min-width:781px){
