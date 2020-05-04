@@ -19,6 +19,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/book/delete/{id}', 'BookController@delete');
 
     Route::get('/users/{id}', 'UserController@showProfile')->name('users.show');
+    Route::post('/users', 'UserController@store');
 
     Route::get('/shelfs', 'ShelfController@index')->name('shelfs.index');
 
