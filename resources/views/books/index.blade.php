@@ -25,7 +25,7 @@
 
 
     <div class="bg-light text-center pt-4 pb-3">
-      <div class="container shelf-table">
+      <div class="container book-table">
         @if($books->count())
         <table class="table table-hover table-striped ">
           <thead>

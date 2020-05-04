@@ -44,11 +44,11 @@
         <form method="POST" action="/users" enctype="multipart/form-data">
           {{ csrf_field() }}
           <label class="btn btn-primary submit-label">
-            ファイルを選択
+            プロフ画像選択
             <input type="file" name="photo">
           </label>
           <label class="btn btn-primary ml-3 submit-label">
-            送信
+            登録
             <input type="submit">
           </label>
         </form>
