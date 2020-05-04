@@ -36,7 +36,7 @@
 
         @if ($is_image)
         <figure>
-          <img src="/storage/profile_images/{{ Auth::id() }}.jpg" width="250px" height="300px" class="border rounded-lg">
+          <img src="/storage/profile_images/{{ Auth::id() }}.jpg" width="280px" height="300px" class="border rounded-lg">
         </figure>
         @endif
 
