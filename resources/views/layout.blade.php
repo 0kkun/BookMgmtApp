@@ -39,7 +39,11 @@
           </nav>
 
           <div class="px-4 py-5">
-            <a href="/" class="btn"> <h1 class="display-5 mb-4 text-white ">Book Management App</h1></a>
+            @if(Auth::check())
+              <a href="/users/{{ Auth::user()->id }}" class="btn"> <h1 class="display-5 mb-4 text-white ">Book Management App</h1></a>
+            @else
+              <a href="/" class="btn"> <h1 class="display-5 mb-4 text-white ">Book Management App</h1></a>
+            @endif
           </div>
         </div>
       </header>
