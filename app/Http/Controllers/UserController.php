@@ -18,26 +18,42 @@ class UserController extends Controller
         $position = self::positionCreate($sum);
 
 
-        $shelfWithBooks = $current_shelfs->with('book')->get();
-        $tests = $shelfWithBooks->where('user_id', $user->id);
+        //カテゴリごとの合計を計算する
+        // mapで連想配列を生成、genreでグループ化し、amountを合計している.最終的にオブジェクトができる
+        $totalByGenre = $current_shelfs->get()->map(function ($shelf, $key) {
+            return [
+                'genre' => $shelf->book->genre_label,
+                'amount' => $shelf->finished_amount
+            ];
+        })->groupBy('genre')->map(function ($item) {
+            return $item->sum('amount');
+        });
 
-        foreach($tests as $test){
-            $myGenre[] = $test->book->genre_label;
-            $myAmount[] = $test->finished_amount;
+        // オブジェクトを連想配列に変換し、ソートで降順にし、top5のみ抽出
+        $totalByGenre_array = json_decode(json_encode($totalByGenre), true);
+        arsort($totalByGenre_array);
+        $top5TotalByGenre = array_slice($totalByGenre_array, 0, 5);
+
+        // グラフに渡すためにgenreとamountの配列生成
+        $genre = array();
+        $amount = array();
+        foreach ($top5TotalByGenre as $key => $value) {
+            array_push($genre, $key);
+            array_push($amount, $value);
         }
-        $combine = array_map(null, $myGenre, $myAmount); //配列を二次元的にくっつけている
 
 
-        $as_total = array_sum(array_column($combine, '1'));
+        $colorArray = array("#BB5179", "#FAFF67", "#58A27C", "#3C00FF", "#00FFFF");
 
-
-        $colorArray = array("#BB5179", "#FAFF67", "#58A27C", "#3C00FF");
 
         $params = [
             'user' => $user,
             'sum' => $sum,
             'colorArray' => $colorArray, 
             'position' => $position,
+            'genre' =>$genre,
+            'amount' =>$amount,
+
         ];
         return view('users.show', $params);
     }
@@ -60,28 +76,3 @@ class UserController extends Controller
         return $position;
     }
 }
-
-
-
-
-// 会員たちを出身地（pref）ごとに分けたい場合
-// $grouped = $collection->groupBy('pref');
-// [genre => finished_amount]という配列を作りたい
-// shelfのbook_idからbookテーブルのidを検索し、そのレコードのgenreを抽出したい
-// $filtered = $collection->pluck('name', 'id');　nameがバリュー、idがキー
-// Group::with('users')->get();
-
-// $groupByGenre = $myShelfs->book()->groupBy('genre');
-// $pluckedByGroup = $groupByGenre->pluck('finished_amount');
-// $sumByGenre = $pluckedByGroup->sum();
-// dd($sumByGenre);
-
-// $groupByGenre = $shelfWithBook->groupBy('genre');
-
-// $oneGenre = $groupByGenre->where('genre','2');
-// $oneGenrePluckedSum = $groupByGenre->pluck('finished_amount')->sum();
-
-// dd($oneGenrePluckedSum);
-
-// $genre = $shelfWithBook->pluck('genre')->first();
-// dd($shelfWithBook);
