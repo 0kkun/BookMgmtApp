@@ -54,10 +54,14 @@
 - 相互フォロワーがメッセージのやり取りができる機能
 - dockerへの搭載
 
-### DB設計
+
+
+# DB設計
+
 
 ## ER図
 https://gyazo.com/dffab108ef4533898670abb269c81a40
+
 
 ## usersテーブル
 |Column|Type|Options|
@@ -66,8 +70,6 @@ https://gyazo.com/dffab108ef4533898670abb269c81a40
 |email            |string   |null: false, unique: true|
 |password         |string   |null: false              |
 |email_verified_at|timestamp|null: false              |
-### Association
-- has_one :shelf
 
 
 ## booksテーブル
@@ -78,19 +80,18 @@ https://gyazo.com/dffab108ef4533898670abb269c81a40
 |genre              |integer  |null: false |
 |created_at         |timestamp|null: false |
 |updated_at         |timestamp|null: false |
-### Association
-- belong_to :shelf
 
 
 ## shelfsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|point        |integer    |null: false |
-|status       |integer    |null: false |
-|created_at   |timestamp  |null: false |
-|updated_at   |timestamp  |null: false |
-|user_id      |integer    |null: false, foreign_key: true |
-|book_id      |integer    |null: false, foreign_key: true |
+|point              |integer    |null: false |
+|status             |integer    |null: false |
+|finished_amount    |integer    |null: false |
+|created_at         |timestamp  |null: false |
+|updated_at         |timestamp  |null: false |
+|user_id            |integer    |null: false, foreign_key: true |
+|book_id            |integer    |null: false, foreign_key: true |
 ### Association
 - belong_to :user
-- has_many :books
+- belong_to :book
