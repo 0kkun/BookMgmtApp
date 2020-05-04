@@ -13,11 +13,25 @@ use Illuminate\Support\Facades\Storage;
 class BookController extends Controller
 {
     // book一覧表示
-    public function index()
+    public function index(Request $request)
     {
-        $books = Book::orderBy('id', 'desc')->paginate(20);
 
-        return view('books/index', compact('books'));
+
+        $keyword = $request->input('keyword');
+        $query = Book::query();
+ 
+        if (!empty($keyword)) {
+            $query->where('title', 'LIKE', "%{$keyword}%");
+        }
+        $books = $query->orderBy('id', 'desc')->paginate(10);
+
+
+        // return view('books/index', compact('books', $resultBooks, 'keyword'));
+
+        return view('books/index', [
+            'books' => $books,
+            'keyword' => $keyword,         
+        ]);
     }
 
 
