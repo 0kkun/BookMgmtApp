@@ -8,6 +8,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function() {
     // get で /books/{id}/books にリクエストが来たら BookControllerのindexメソッドを呼びだす。最後にこのルートに名前をつけてる
     Route::get('/books', 'BookController@index')->name('books.index');
+    Route::post('/books/{id}', 'BookController@upload')->name('books.upload');
 
     Route::get('/books/create', 'BookController@showCreateForm')->name('books.create');
     Route::post('/books/create', 'BookController@create');
