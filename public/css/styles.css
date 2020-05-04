@@ -50,6 +50,13 @@ tbody{
 .shelf-table{
   min-height: 352px;
 }
+label > input {
+  display:none; 
+  }
+label {
+padding: 10px; 
+border: double 4px #AAAAAA;
+}
 
 @media screen and (min-width:781px){
   .search-box {
