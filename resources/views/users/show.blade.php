@@ -14,10 +14,46 @@
 
 
   <section class="profile bg-light container-fluid">
+    <!------------- エラー処理 ----------------->
+    @if($errors->any())
+      <div class="alert alert-danger">
+        <ul>
+          @foreach($errors->all() as $message)
+            <li>{{ $message }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
+    <!---------------------------------------->
+    @if (session('success'))
+    <div class="alert alert-success">
+      {{ session('success') }}
+    </div>
+    @endif
     <div class="row">
-      <div class="col-sm-6 text-center">
-        <img src="img/phone.png" class="profile-img mt-5 rounded-circle">
-        <div class="pt-4">ユーザー名：{{ Auth::user()->name }} </div>
+      <div class="col-sm-6 text-center pt-5">
+
+
+        @if ($is_image)
+        <figure>
+          <img src="/storage/profile_images/{{ Auth::id() }}.jpg" width="250px" height="300px" class="border rounded-lg">
+        </figure>
+        @endif
+
+        <!-- <img src="img/phone.png" class="profile-img mt-5 rounded-circle"> -->
+        <form method="POST" action="/users" enctype="multipart/form-data">
+          {{ csrf_field() }}
+          <label class="btn btn-primary">
+            ファイルを選択
+            <input type="file" name="photo">
+          </label>
+          <label class="btn btn-primary ml-3">
+            送信
+            <input type="submit">
+          </label>  
+        </form>
+
+        <div class="pt-3">ユーザー名：{{ Auth::user()->name }} </div>
         
         <!-- <div class="pt-4 text-primary">フォロー：８ </div>
         <div class="text-primary">フォワー：16 </div> -->
