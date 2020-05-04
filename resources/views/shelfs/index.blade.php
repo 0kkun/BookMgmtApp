@@ -19,6 +19,7 @@
       </span>
     </div>
 
+
     <div class="bg-light text-center pt-4 pb-3">
       <div class="container shelf-table">
         <table class="table table-hover table-striped">
@@ -34,18 +35,18 @@
             </tr>
           </thead>
           <tbody>
-          @foreach ($shelfs as $shelf) 
+          @foreach ($myShelfs as $myShelf) 
             <tr>
-              <td>{{ $shelf->book->title }}</td>
-              <td>{{ $shelf->point}}</td>
-              <td>{{ $shelf->finished_amount }} / {{$shelf->book->book_volume}}</td>
-              <td>{{ $shelf->status_label }}</td>
-              <td><a href="{{ route('shelfs.edit', ['id' => $shelf->book_id, 'shelf_id' => $shelf->id]) }}">編集</a></td>
+              <td>{{ $myShelf->book->title }}</td>
+              <td>{{ $myShelf->point}}</td>
+              <td>{{ $myShelf->finished_amount }} / {{$myShelf->book->book_volume}}</td>
+              <td>{{ $myShelf->status_label }}</td>
+              <td><a href="{{ route('shelfs.edit', ['id' => $myShelf->book_id, 'shelf_id' => $myShelf->id]) }}">編集</a></td>
             </tr>
           @endforeach
           </tbody>
         </table>
-        {{ $shelfs->links() }}
+        {{ $myShelfs->links() }}
       </div>
     </div>
   </section>

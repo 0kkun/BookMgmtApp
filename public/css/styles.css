@@ -47,6 +47,9 @@ tbody{
   height: 250px;
   width: 200px;
 }
+.shelf-table{
+  min-height: 352px;
+}
 
 @media screen and (min-width:781px){
   .search-box {
