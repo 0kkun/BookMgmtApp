@@ -25,24 +25,23 @@
         <span>あなたは・・・</span>
         <span class="display-4">ガチオタ！</span>
 
-        <p class="pt-3 lead">読んだ本の総数： 1,000 冊</p>
+        <p class="pt-3 lead">読んだ本の総数： {{$sum}} 冊</p>
+
 
         <canvas id="myPieChart" class="pb-3"></canvas>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
         <script>
+          var colorArray = <?php echo json_encode($colorArray); ?>;
+          // console.log(colorArray);
+
           var ctx = document.getElementById("myPieChart");
           var myPieChart = new Chart(ctx, {
             type: 'pie',
             data: {
               labels: ["ギャグ", "ラブコメ", "ミステリー", "バトル"],
               datasets: [{
-                  backgroundColor: [
-                      "#BB5179",
-                      "#FAFF67",
-                      "#58A27C",
-                      "#3C00FF"
-                  ],
-                  data: [38, 31, 21, 10]
+                  backgroundColor: colorArray,
+              data: [38, 31, 21, 10]
               }]
             },
             options: {
