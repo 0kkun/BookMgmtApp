@@ -7,6 +7,8 @@ use App\Shelf;
 use App\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ProfileRequest;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -46,6 +48,12 @@ class UserController extends Controller
         $colorArray = array("#BB5179", "#FAFF67", "#58A27C", "#3C00FF", "#00FFFF");
 
 
+        $is_image = false;
+        if (Storage::disk('local')->exists('public/profile_images/' . Auth::id() . '.jpg')) {
+            $is_image = true;
+        }
+
+
         $params = [
             'user' => $user,
             'sum' => $sum,
@@ -53,12 +61,21 @@ class UserController extends Controller
             'position' => $position,
             'genre' =>$genre,
             'amount' =>$amount,
-
+            'is_image' => $is_image,
         ];
+
         return view('users.show', $params);
     }
 
 
+
+    public function store(ProfileRequest $request)
+    {
+        $request->photo->storeAs('public/profile_images', Auth::id() . '.jpg');
+        $user = Auth::user();
+
+        return redirect()->route('users.show', $user)->with('success', '新しいプロフィールを登録しました');
+    }
 
 
     private static function positionCreate($sum){
