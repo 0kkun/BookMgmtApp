@@ -31,6 +31,7 @@ class ShelfsTableSeeder extends Seeder
         
             DB::table('shelfs')->insert([
             'book_id' => $faker->numberBetween($min = 1, $max = 30),
+            'user_id' => $faker->numberBetween($min = 1, $max = 30),
             'status' => $faker->numberBetween($min = 1, $max = 3),
             'point' => $faker->numberBetween($min = 70, $max = 100),
             'finished_amount' => $faker->numberBetween($min = 1, $max = 100),

@@ -7,18 +7,22 @@ use App\Book;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateShelf;
 use App\Http\Requests\EditShelf;
+use Illuminate\Support\Facades\Auth;
 
 class ShelfController extends Controller
 {
     public function index(Shelf $shelf, Book $book)
     {
-
-        $shelfs = Shelf::orderBy('id', 'desc')->paginate(10);
         $books = Book::all();
+        $user = Auth::user();
+
+        $allshelfs = Shelf::all();
+        $myShelfs = Shelf::where('user_id', $user->id)->orderBy('id', 'desc')->paginate(5);
+
 
         return view('shelfs/index', [
             'books' => $books,
-            'shelfs' => $shelfs,
+            'myShelfs' => $myShelfs 
         ]);
     }
 
@@ -45,7 +49,7 @@ class ShelfController extends Controller
         $shelf->finished_amount = $request->finished_amount;
         $shelf->point = $request->point;
 
-        // $shelf->user_id = auth()->id();
+        $shelf->user_id = auth()->id();
         $shelf->book_id = $book->id;
         $shelf->save();
         // $book->shelf()->save($shelf);

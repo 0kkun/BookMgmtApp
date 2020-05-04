@@ -20,6 +20,11 @@ class Shelf extends Model
         return $this->belongsTo('App\Book');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
     public function getStatusLabelAttribute()
     {
         // 状態値
