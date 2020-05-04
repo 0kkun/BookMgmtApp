@@ -23,7 +23,7 @@
       </div>
       <div class="col-sm-6 text-center">
         <span>あなたは・・・</span>
-        <span class="display-4">ガチオタ！</span>
+        <span class="display-4">{{ $position }}！</span>
 
         <p class="pt-3 lead">読んだ本の総数： {{$sum}} 冊</p>
 
