@@ -18,8 +18,8 @@
         <img src="img/phone.png" class="profile-img mt-5 rounded-circle">
         <div class="pt-4">ユーザー名：{{ Auth::user()->name }} </div>
         
-        <div class="pt-4 text-primary">フォロー：８ </div>
-        <div class="text-primary">フォワー：16 </div>
+        <!-- <div class="pt-4 text-primary">フォロー：８ </div>
+        <div class="text-primary">フォワー：16 </div> -->
       </div>
       <div class="col-sm-6 text-center">
         <span>あなたは・・・</span>
@@ -47,7 +47,7 @@
             options: {
               title: {
                 display: true,
-                text: 'カテゴリー'
+                text: 'ジャンル '
               }
             }
           });
