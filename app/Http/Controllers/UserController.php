@@ -13,25 +13,23 @@ class UserController extends Controller
     public function showProfile(){
 
         $user = Auth::user();
-        $myShelfs = Shelf::where('user_id', $user->id);
-
-        $plucked = $myShelfs->pluck('finished_amount'); //pluckメソッドでfinished_amountを抽出
-        $sum = $plucked->sum();
+        $current_shelfs = Shelf::where('user_id', $user->id);
+        $sum= $current_shelfs->pluck('finished_amount')->sum(); //pluckメソッドでfinished_amountを抽出し合計
         $position = self::positionCreate($sum);
 
-        $shelfWithBooks = $myShelfs->with('book')->get();
-        $hoge = array();
 
-        foreach($shelfWithBooks as $shelfWithBook){
-            $myGenre[] = $shelfWithBook->book->genre_label;
-            $myAmount[] = $shelfWithBook->finished_amount;
+        $shelfWithBooks = $current_shelfs->with('book')->get();
+        $tests = $shelfWithBooks->where('user_id', $user->id);
+
+        foreach($tests as $test){
+            $myGenre[] = $test->book->genre_label;
+            $myAmount[] = $test->finished_amount;
         }
         $combine = array_map(null, $myGenre, $myAmount); //配列を二次元的にくっつけている
-        // dd($myGenre);
-        // dd($myAmount);
+
 
         $as_total = array_sum(array_column($combine, '1'));
-        // dd($as_total);
+
 
         $colorArray = array("#BB5179", "#FAFF67", "#58A27C", "#3C00FF");
 
@@ -39,11 +37,12 @@ class UserController extends Controller
             'user' => $user,
             'sum' => $sum,
             'colorArray' => $colorArray, 
-            'shelfWithBook'=>$shelfWithBook,
             'position' => $position,
         ];
         return view('users.show', $params);
     }
+
+
 
 
     private static function positionCreate($sum){
@@ -60,26 +59,6 @@ class UserController extends Controller
         }
         return $position;
     }
-
-    // public function positionCreate($sum){
-        
-    //     if($sum <= 99){
-    //         $position="にわか";
-    //     } elseif(100 <= $sum && $sum <= 199 ) {
-    //         $position="ちょいオタ";
-    //     }elseif(200 <= $sum && $sum <= 299) {
-    //         $position="オタク";
-    //     }elseif( 300 <= $sum && $sum <= 499 ) {
-    //         $position="ガチオタ";
-    //     }elseif( 500 <= $sum  ) {
-    //         $position="本の神様";
-    //     }
-    //     return $position;
-
-    // }
-
-
-
 }
 
 
@@ -91,7 +70,6 @@ class UserController extends Controller
 // shelfのbook_idからbookテーブルのidを検索し、そのレコードのgenreを抽出したい
 // $filtered = $collection->pluck('name', 'id');　nameがバリュー、idがキー
 // Group::with('users')->get();
-
 
 // $groupByGenre = $myShelfs->book()->groupBy('genre');
 // $pluckedByGroup = $groupByGenre->pluck('finished_amount');
