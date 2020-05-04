@@ -17,7 +17,7 @@ class ShelfController extends Controller
         $user = Auth::user();
 
         $allshelfs = Shelf::all();
-        $myShelfs = Shelf::where('user_id', $user->id)->orderBy('id', 'desc')->paginate(5);
+        $myShelfs = Shelf::where('user_id', $user->id)->orderBy('id', 'desc')->paginate(10);
 
 
         return view('shelfs/index', [
