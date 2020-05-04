@@ -7,6 +7,8 @@ use App\Book;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateBook;
 use App\Http\Requests\EditBook;
+use App\Http\Requests\BookRequest;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -28,9 +30,6 @@ class BookController extends Controller
 
 
 
-
-
-
     // book新規作成処理
     public function create(CreateBook $request)
     {
@@ -46,15 +45,21 @@ class BookController extends Controller
 
 
 
-
     // book編集画面表示
     public function showEditForm(int $id)
     {
         $book = Book::find($id);
-    
-        return view('books/edit', compact('book'));
-    }
 
+        $is_image = false;
+        if (Storage::disk('local')->exists('public/book_images/' . $book->id . '.jpg')) {
+            $is_image = true;
+        }
+
+        return view('books/edit', [
+            'is_image' => $is_image,
+            'book' => $book,
+        ]);
+    }
 
 
 
@@ -73,10 +78,22 @@ class BookController extends Controller
     }
 
 
+
     // book削除処理
     public function delete (Request $request)
     {
         Book::find($request->id)->delete();
         return redirect()->route('books.index');
+    }
+
+
+    
+    // 画像登録処理
+    public function upload(int $id, BookRequest $request)
+    {
+        $book = Book::find($id);
+        $request->photo->storeAs('public/book_images', $book->id . '.jpg');
+
+        return redirect()->route('books.edit', $book)->with('success', '画像を登録しました');
     }
 }
