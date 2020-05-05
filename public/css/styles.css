@@ -47,8 +47,11 @@ tbody{
   height: 250px;
   width: 200px;
 }
-.shelf-table{
+.book-table{
   min-height: 352px;
+}
+.shelf-table{
+  min-height: 366px;
 }
 label > input {
   display:none; 

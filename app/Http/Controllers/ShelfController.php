@@ -8,21 +8,31 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateShelf;
 use App\Http\Requests\EditShelf;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ShelfController extends Controller
 {
-    public function index(Shelf $shelf, Book $book)
+    public function index(Shelf $shelf, Book $book, Request $request)
     {
         $books = Book::all();
         $user = Auth::user();
 
-        $allshelfs = Shelf::all();
-        $myShelfs = Shelf::where('user_id', $user->id)->orderBy('id', 'desc')->paginate(5);
+        $myShelfs = Shelf::where('user_id', $user->id)->orderBy('id', 'desc')->paginate(10);
 
+
+        // $keyword = $request->input('keyword');
+        // $query = Shelf::query();
+ 
+        // if (!empty($keyword)) {
+        //     $query->where('title', 'LIKE', "%{$keyword}%");
+        // }
+        // $myShelfs = $query->where('user_id', $user->id)->orderBy('id', 'desc')->paginate(10);
 
         return view('shelfs/index', [
             'books' => $books,
-            'myShelfs' => $myShelfs 
+            'myShelfs' => $myShelfs,
+            // 'keyword' => $keyword,
         ]);
     }
 
@@ -44,6 +54,9 @@ class ShelfController extends Controller
     // shelf新規作成
     public function store(Book $book, CreateShelf $request)
     {
+        $max = $book->book_volume;
+        $request->validate([ 'finished_amount' => "integer|max:{$max}"]);
+
         $shelf = new Shelf();
         $shelf->status = $request->status;
         $shelf->finished_amount = $request->finished_amount;
@@ -52,22 +65,26 @@ class ShelfController extends Controller
         $shelf->user_id = auth()->id();
         $shelf->book_id = $book->id;
         $shelf->save();
-        // $book->shelf()->save($shelf);
 
         return redirect()->route('shelfs.index');
     }
 
 
 
-    // GET /folders/{id}/tasks/{task_id}/edit
     public function edit(Book $book, Shelf $shelf)
     {
 
         $this->checkRelation($book, $shelf);
 
+        $is_image = false;
+        if (Storage::disk('local')->exists('public/book_images/' . $book->id . '.jpg')) {
+            $is_image = true;
+        }
+
         return view('shelfs/edit', [
             'shelf' => $shelf,
             'book' => $book,
+            'is_image' => $is_image,
         ]);
     }
 
@@ -77,6 +94,9 @@ class ShelfController extends Controller
     public function update(Book $book, Shelf $shelf, EditShelf $request)
     {
         $this->checkRelation($book, $shelf);
+
+        $max = $book->book_volume;
+        $request->validate([ 'finished_amount' => "integer|max:{$max}"]);
 
         $shelf->status = $request->status;
         $shelf->finished_amount = $request->finished_amount;

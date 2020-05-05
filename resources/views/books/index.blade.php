@@ -11,18 +11,22 @@
   </section>
 
   <section class="shelf bg-light container-fluid">
+    
+      <form action="{{url('/books')}}" method="GET">
+        <div class="input-group  container-fluid pt-5 px-sm-5 search-box">
+          <input type="text" class="form-control" name="keyword" value="{{$keyword}}" placeholder="タイトル名で検索">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-default bg-dark text-white">検索</button>
+          </span>
+          <a href="{{ route('books.create') }}" class="btn-sm btn-primary ml-4 pt-2">本を新規登録</a>
+        </div>
+      </form>
 
 
-    <div class="input-group  container-fluid pt-5 px-sm-5 search-box">
-      <input type="text" class="form-control" placeholder="テキスト入力欄">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-default bg-dark text-white">検索</button>
-      </span>
-      <a href="{{ route('books.create') }}" class="btn-sm btn-primary ml-4 pt-2">本を新規登録</a>
-    </div>
 
     <div class="bg-light text-center pt-4 pb-3">
-      <div class="container shelf-table">
+      <div class="container book-table">
+        @if($books->count())
         <table class="table table-hover table-striped ">
           <thead>
             <tr class= "bg-secondary text-white">
@@ -41,6 +45,9 @@
             @endforeach
           </tbody>
         </table>
+        @else
+        <p>見つかりませんでした。</p>
+        @endif
         {{ $books->links() }}
       </div>
     </div>

@@ -11,20 +11,21 @@
   </section>
 
 
-  <section class="shelf bg-light">
-    <div class="input-group  container-fluid pt-5 px-sm-5 search-box">
-      <input type="text" class="form-control" placeholder="テキスト入力欄">
-      <span class="input-group-btn">
-        <button type="submit" class="btn btn-default bg-dark text-white">検索</button>
-      </span>
-    </div>
+  <!-- <section class="shelf bg-light">
+    <form action="{{url('/shelfs')}}" method="GET">
+      <div class="input-group  container-fluid pt-5 px-sm-5 search-box">
+        <input type="text" class="form-control" name="keyword"  placeholder="タイトル名で検索">
+        <span class="input-group-btn">
+          <button type="submit" class="btn btn-default bg-dark text-white">検索</button>
+        </span>
+      </div>
+    </form> -->
 
 
-    <div class="bg-light text-center pt-4 pb-3">
-      <div class="container shelf-table">
+    <div class="bg-light text-center pt-5 pb-3">
+      <div class="container shelf-table mt-5">
+      @if($myShelfs->count())
         <table class="table table-hover table-striped">
-
-          <!-- $comment->post->title; -->
           <thead>
             <tr class= "bg-secondary text-white" >
               <th>タイトル</th>
@@ -46,6 +47,9 @@
           @endforeach
           </tbody>
         </table>
+        @else
+        <p>本は登録されていません。</p>
+        @endif
         {{ $myShelfs->links() }}
       </div>
     </div>
