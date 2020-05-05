@@ -20,7 +20,6 @@ class ShelfController extends Controller
 
         $myShelfs = Shelf::where('user_id', $user->id)->orderBy('id', 'desc')->paginate(10);
 
-
         // $keyword = $request->input('keyword');
         // $query = Shelf::query();
  
@@ -40,12 +39,11 @@ class ShelfController extends Controller
 
 
     // shelf新規作成画面表示
-    public function create(Shelf $shelf, Book $book)
+    public function create(Book $book)
     {
 
         return view('shelfs/create', [
             'book_id' => $book->id,
-            'shelf' => $shelf,
             'book' => $book,
         ]);
     }
@@ -61,9 +59,8 @@ class ShelfController extends Controller
         $shelf->status = $request->status;
         $shelf->finished_amount = $request->finished_amount;
         $shelf->point = $request->point;
-
         $shelf->user_id = auth()->id();
-        $shelf->book_id = $book->id;
+        $shelf->book_id = $request->book_id;
         $shelf->save();
 
         return redirect()->route('shelfs.index');

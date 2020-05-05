@@ -7,7 +7,7 @@ use App\Book;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateBook;
 use App\Http\Requests\EditBook;
-use App\Http\Requests\BookRequest;
+// use App\Http\Requests\BookRequest;
 use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
@@ -16,7 +16,6 @@ class BookController extends Controller
     public function index(Request $request)
     {
 
-
         $keyword = $request->input('keyword');
         $query = Book::query();
  
@@ -24,9 +23,6 @@ class BookController extends Controller
             $query->where('title', 'LIKE', "%{$keyword}%");
         }
         $books = $query->orderBy('id', 'desc')->paginate(10);
-
-
-        // return view('books/index', compact('books', $resultBooks, 'keyword'));
 
         return view('books/index', [
             'books' => $books,
@@ -103,10 +99,13 @@ class BookController extends Controller
 
     
     // 画像登録処理
-    public function upload(int $id, BookRequest $request)
+    public function upload(int $id, Request $request)
     {
+        $request->validate([ 'photo' => 'required|file|image|mimes:jpeg,png,jpg,gif|max:2048']);
+
         $book = Book::find($id);
         $request->photo->storeAs('public/book_images', $book->id . '.jpg');
+
 
         return redirect()->route('books.edit', $book)->with('success', '画像を登録しました');
     }

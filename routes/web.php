@@ -8,7 +8,6 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::group(['middleware' => 'auth'], function() {
     // get で /books/{id}/books にリクエストが来たら BookControllerのindexメソッドを呼びだす。最後にこのルートに名前をつけてる
     Route::get('/books', 'BookController@index')->name('books.index');
-    Route::post('/books/{id}', 'BookController@upload')->name('books.upload');
 
     Route::get('/books/create', 'BookController@showCreateForm')->name('books.create');
     Route::post('/books/create', 'BookController@create');
@@ -31,6 +30,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/books/{book}/shelfs/{shelf}/edit', 'ShelfController@update');
 
     Route::post('/shelf/delete/{id}', 'ShelfController@delete');
+
+    Route::post('/books/{id}', 'BookController@upload')->name('books.upload');
 });
 
 

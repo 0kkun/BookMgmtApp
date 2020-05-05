@@ -25,16 +25,13 @@
     <!---------------------------------------->
     <div class="container">
       <div class="row">
-        <div class="col-sm-3 text-center">
-          <img src="img/dragonball.jpg" class="book-img mb-5 mt-5">
-          <label>
-            <span class="btn btn-primary">
-              Choose File
-              <input type="file" style="display:none">
-            </span>
-          </label>
+        <div class="col-sm-4 text-center pt-5">
+          <div class="no-image text-center bg-secondary text-white pt-5 display-4 mb-2 border rounded">
+            No image
+          </div>
         </div>
-        <div class="col-sm-9 pt-5">
+
+        <div class="col-sm-8 pt-5">
           <div class="row">
             <div class="col-6 font-weight-bold text-right">
               <p class="pt-2">タイトル：</p>
@@ -42,7 +39,8 @@
               <p class="pt-2">総巻数：</p>
             </div>
             <div class="col-6">
-              <form action="{{ route('books.create') }}" method="POST">
+              <!-- <form action="{{ route('books.create') }}" method="POST"> -->
+              <form action="{{ action('BookController@create') }}" method="POST">
                 <div class="form-group">
                   @csrf
                   <input type="text" class="form-control mb-2" name="title" id="title" value="{{ old('title') }}" />
@@ -54,7 +52,6 @@
                       </option>
                     @endforeach
                   </select>
-
                   <input type="number" name="book_volume" id="book_volume" class="form-control mb-2" value="{{ old('book_volume') }}" />  
 
                   <div class="text-right">

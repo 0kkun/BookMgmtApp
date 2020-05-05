@@ -30,13 +30,13 @@ class CreateShelf extends FormRequest
             'status'          => 'not_in: 0',
             'finished_amount' => 'required | integer | between:0,1000',
             'point'           => 'required | integer | between:0,100',
-            // 'book_id' => 'unique:shelfs,book_id,' . $this->id,
+            // shelfsモデルにbook_idとuser_idの組み合わせがすでに存在するかチェック
             // 'book_id' => [
-            //     Rule::unique('shelfs')->ignore($this->book_id)
-            // ]
-            // 'book_id' => [Rule::unique('shelfs')->ignore($this->id)]
-            // 'book_id' =>  ['unique:shelf']
-            // 'book_id' => ['exists:connection.shelfs,book_id'],
+            //     'required',
+            //     Rule::unique('shelfs')->ignore($this->input('id'))->where(function($query) {
+            //         $query->where('user_id', $this->input('user_id'));
+            //     }),
+            // ],
         ];
     }
 
@@ -47,6 +47,7 @@ class CreateShelf extends FormRequest
             'status'          => 'ステータス',
             'finished_amount' => '完了数',
             'point'           => '評価点数',
+            'book_id' => '本',
         ];
     }
 }

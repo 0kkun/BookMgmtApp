@@ -48,16 +48,19 @@
               <form action="{{ route('shelfs.create', ['id' => $book_id]) }}" method="POST">
                 <div class="form-group">
                   @csrf
-                  <input type="number" class="form-control mb-2" name="finished_amount" id="finished_amount" value="{{ old('finished_amount') ?? $shelf->finished_amount }}" />
+                  <input type="number" class="form-control mb-2" name="finished_amount" id="finished_amount" value="{{ old('finished_amount') }}" />
                   <select name="status" id="status" class="form-control mb-2">
                     @foreach(\App\Shelf::STATUS as $key => $val)
-                      <option value="{{$key}}" {{ $key == old('status', $shelf->status) ? 'selected' : '' }}>
+                      <option value="{{$key}}">
                         {{ $val['label'] }}
                       </option>
                     @endforeach
                   </select>
 
-                  <input type="number" class="form-control" name="point" id="point" value="{{ old('point') ?? $shelf->point }}" />
+                  <input type="number" class="form-control" name="point" id="point" value="{{ old('point') }}" />
+
+                  <input type="hidden" class="form-control" name="book_id" id="book_id" value="{{ $book_id }}"/>
+                  <input type="hidden" class="form-control" name="user_id" id="user_id" value="{{ Auth::user()->id }}"/>
 
                   <div class="text-right">
                     <button type="submit" class="btn mt-5 btn-success">登録</button>
