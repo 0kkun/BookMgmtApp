@@ -158,6 +158,7 @@ return [
         'email' => 'メールアドレス',
         'password' => 'パスワード',
         'token' => 'トークン',
+        'finished_amount' => '完了数',
     ],
 
 ];

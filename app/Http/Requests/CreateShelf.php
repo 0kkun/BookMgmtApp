@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Book;
+use App\Shelf;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CreateShelf extends FormRequest
 {
@@ -27,6 +30,13 @@ class CreateShelf extends FormRequest
             'status'          => 'not_in: 0',
             'finished_amount' => 'required | integer | between:0,1000',
             'point'           => 'required | integer | between:0,100',
+            // 'book_id' => 'unique:shelfs,book_id,' . $this->id,
+            // 'book_id' => [
+            //     Rule::unique('shelfs')->ignore($this->book_id)
+            // ]
+            // 'book_id' => [Rule::unique('shelfs')->ignore($this->id)]
+            // 'book_id' =>  ['unique:shelf']
+            // 'book_id' => ['exists:connection.shelfs,book_id'],
         ];
     }
 

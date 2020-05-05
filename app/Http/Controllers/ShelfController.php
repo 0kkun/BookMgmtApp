@@ -9,6 +9,7 @@ use App\Http\Requests\CreateShelf;
 use App\Http\Requests\EditShelf;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ShelfController extends Controller
 {
@@ -53,6 +54,9 @@ class ShelfController extends Controller
     // shelf新規作成
     public function store(Book $book, CreateShelf $request)
     {
+        $max = $book->book_volume;
+        $request->validate([ 'finished_amount' => "integer|max:{$max}"]);
+
         $shelf = new Shelf();
         $shelf->status = $request->status;
         $shelf->finished_amount = $request->finished_amount;
@@ -90,6 +94,9 @@ class ShelfController extends Controller
     public function update(Book $book, Shelf $shelf, EditShelf $request)
     {
         $this->checkRelation($book, $shelf);
+
+        $max = $book->book_volume;
+        $request->validate([ 'finished_amount' => "integer|max:{$max}"]);
 
         $shelf->status = $request->status;
         $shelf->finished_amount = $request->finished_amount;
