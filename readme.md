@@ -28,7 +28,7 @@
 ### 本番環境
 - デプロイ先：Heroku
 - URL：http://book-mgmt-app.herokuapp.com/
-- テストアカウント: [id: "dummy.mail.com" / pass: "test1234"]
+- テストアカウント: [id: "dummy.email.com" / pass: "test1234"]
 
 ### 制作背景(意図)
 - 漫画喫茶や本屋に行った際に、どの本を読みたいかを思い出させてくれるアプリが欲しいと思い作成しました。
