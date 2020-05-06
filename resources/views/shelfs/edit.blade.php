@@ -29,7 +29,7 @@
         <div class="col-sm-3 text-center">
           @if ($is_image)
             <figure>
-              <img src="/storage/book_images/{{ $book->id }}.jpg" width="280px" height="300px" class="border rounded">
+              <img src="/storage/book_images/{{ $book->id }}.jpg" width="250px" height="300px" class="border rounded">
             </figure>
           @else
             <div class="no-image text-center bg-secondary text-white pt-5 display-4 mb-2 border rounded">
