@@ -7,7 +7,6 @@ use App\Book;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateBook;
 use App\Http\Requests\EditBook;
-// use App\Http\Requests\BookRequest;
 use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller

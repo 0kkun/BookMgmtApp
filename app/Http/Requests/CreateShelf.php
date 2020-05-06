@@ -31,12 +31,12 @@ class CreateShelf extends FormRequest
             'finished_amount' => 'required | integer | between:0,1000',
             'point'           => 'required | integer | between:0,100',
             // shelfsモデルにbook_idとuser_idの組み合わせがすでに存在するかチェック
-            // 'book_id' => [
-            //     'required',
-            //     Rule::unique('shelfs')->ignore($this->input('id'))->where(function($query) {
-            //         $query->where('user_id', $this->input('user_id'));
-            //     }),
-            // ],
+            'book_id' => [
+                'required',
+                Rule::unique('shelfs')->ignore($this->input('id'))->where(function($query) {
+                    $query->where('user_id', $this->input('user_id'));
+                }),
+            ],
         ];
     }
 

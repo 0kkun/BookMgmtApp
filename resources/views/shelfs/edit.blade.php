@@ -68,6 +68,7 @@
                   <input type="number" class="form-control" name="point" id="point" value="{{ old('point') ?? $shelf->point }}" />
                   <input type="hidden" class="form-control" name="book_id" id="book_id" value="{{ $shelf->book_id }}"/>
                   <input type="hidden" class="form-control" name="user_id" id="user_id" value="{{ Auth::user()->id }}"/>
+                  <input type="hidden" class="form-control" name="id" id="id" value="{{ $shelf->id }}"/>
 
                   <div class="text-right mb-2">
                     <button type="submit" class="btn mt-5 btn-success">編集保存</button>

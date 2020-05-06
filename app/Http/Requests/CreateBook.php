@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Requests;
+use Illuminate\Validation\Rule;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -26,9 +27,10 @@ class CreateBook extends FormRequest
 
         return [
             'title' => 'required|max:30',
-            // 'title' => 'required|unique:books|max:30',
-            // 'title' => 'required||max:30|unique:books,title'.$this->me->title.title',
-            // 'title' => 'required|max:30|unique:books,title,'.$this->title.',title',
+            'title' => [
+                'required',
+                Rule::unique('books')->ignore($this->id),
+            ],
             'genre' => 'not_in: 0',
             'book_volume' => 'required | integer | between:1,1000',
         ];
