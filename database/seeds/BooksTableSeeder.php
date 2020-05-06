@@ -66,7 +66,7 @@ class BooksTableSeeder extends Seeder
             [
                 'title' => 'こちら葛飾区亀有公園前派出所',
                 'genre' => 12,
-                'book_volume' => 11,
+                'book_volume' => 200,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
