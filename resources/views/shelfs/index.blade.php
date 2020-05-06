@@ -22,31 +22,33 @@
     </form> -->
 
 
-    <div class="bg-light text-center pt-5 pb-3">
+    <div class="bg-light text-center pt-5 pb-3 h6">
       <div class="container shelf-table mt-5">
       @if($myShelfs->count())
-        <table class="table table-hover table-striped">
+        <table class="table ">
           <thead>
-            <tr class= "bg-secondary text-white" >
-              <th>タイトル</th>
-              <th>評価</th>
-              <th>完了 / 総数</th>
-              <th>ステータス</th>
-              <th>編集</th>
+            <tr>
+              <th class="non title">タイトル</th>
+              <th scope="point"> 評価</th>
+              <th scope="amount"> 完了 / 総数</th>
+              <th scope="status"> ステータス</th>
+              <th scope="button"> 編集</th>
             </tr>
           </thead>
           <tbody>
           @foreach ($myShelfs as $myShelf) 
             <tr>
-              <td>{{ $myShelf->book->title }}</td>
-              <td>{{ $myShelf->point}}</td>
-              <td>{{ $myShelf->finished_amount }} / {{$myShelf->book->book_volume}}</td>
-              <td>{{ $myShelf->status_label }}</td>
-              <td><a href="{{ route('shelfs.edit', ['id' => $myShelf->book_id, 'shelf_id' => $myShelf->id]) }}">編集</a></td>
+              <th >{{ $myShelf->book->title }}</th>
+              <td data-label="評価" class="txt text-center">{{ $myShelf->point}}</td>
+              <td data-label="完了 / 総数" class="text-center">{{ $myShelf->finished_amount }} / {{$myShelf->book->book_volume}}</td>
+              <td data-label="ステータス" class="text-center">{{ $myShelf->status_label }}</td>
+              <td data-label="追加/編集" class="text-center"><a href="{{ route('shelfs.edit', ['id' => $myShelf->book_id, 'shelf_id' => $myShelf->id]) }}">編集</a></td>
             </tr>
           @endforeach
           </tbody>
         </table>
+
+
         @else
         <p>本は登録されていません。</p>
         @endif

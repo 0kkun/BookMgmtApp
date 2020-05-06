@@ -21,7 +21,7 @@ class BookController extends Controller
         if (!empty($keyword)) {
             $query->where('title', 'LIKE', "%{$keyword}%");
         }
-        $books = $query->orderBy('id', 'desc')->paginate(10);
+        $books = $query->orderBy('id', 'desc')->paginate(5);
 
         return view('books/index', [
             'books' => $books,

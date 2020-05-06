@@ -24,9 +24,36 @@
 
 
 
-    <div class="bg-light text-center pt-4 pb-3">
+    <div class="bg-light text-center pt-4 pb-3 h6">
+
+
       <div class="container book-table">
         @if($books->count())
+
+        <table class="table ">
+          <thead>
+            <tr>
+              <th class="non title">タイトル</th>
+              <th scope=" genre">ジャンル</th>
+              <th scope=" amount">最新巻</th>
+              <th scope=" button">追加・編集</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($books as $book)
+              <tr>
+                <th class="title">{{ $book->title }}</th>
+                <td data-label="ジャンル" class="txt text-center">{{ $book->genre_label }}</td>
+                <td data-label="最新巻" class="text-center">{{ $book->book_volume }}</td>
+                <td data-label="追加/編集" class="text-center button"><a href="{{ route('shelfs.create', ['id' => $book->id]) }}" class="btn-sm btn-primary">追加</a> <a href="{{ route('books.edit', ['id' => $book->id]) }}" class="btn-sm btn-primary">編集</a></td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+
+
+<!-- 
+
         <table class="table table-hover table-striped ">
           <thead>
             <tr class= "bg-secondary text-white">
@@ -47,9 +74,11 @@
         </table>
         @else
         <p>見つかりませんでした。</p>
-        @endif
-        {{ $books->links() }}
+        @endif　-->
+        {{ $books->links() }} 
       </div>
+
+
     </div>
   </section>
 @endsection

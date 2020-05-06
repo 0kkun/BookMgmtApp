@@ -62,8 +62,8 @@
           <div class="row">
             <div class="col-6 font-weight-bold text-right">
               <p class="pt-2">タイトル：</p>
-              <p class="pt-1">ジャンル：</p>
-              <p class="pt-2">総巻数：</p>
+              <p class="pt-2">ジャンル：</p>
+              <p class="pt-2">最新巻：</p>
             </div>
             <div class="col-6">
               <form action="{{ route('books.edit', ['id' => $book->id]) }}" method="POST">

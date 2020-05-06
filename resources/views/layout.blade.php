@@ -19,13 +19,14 @@
   
             <div id="menu" class="collapse navbar-collapse">
               @if(Auth::check())
-                <span class="my-navbar-item mr-3 font-weight-bold">ようこそ, {{ Auth::user()->name }}さん</span>
+                <span class="my-navbar-item mr-3 font-weight-bold text-white">ようこそ, {{ Auth::user()->name }}さん</span>
                 <ul class="navbar-nav">
                   <li class="nav-item">
+                    <a href="/users/{{ Auth::user()->id }}" class=" nav-link btn-dark text-white text-center">マイページ</a>
                     <a href="#" id="logout" class="nav-link btn-dark text-white text-center ">ログアウト</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                      @csrf
-                    </form>
+                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                      </form>
                   </li>
                 </ul>
               @else

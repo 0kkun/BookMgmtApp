@@ -18,7 +18,7 @@ class ShelfController extends Controller
         $books = Book::all();
         $user = Auth::user();
 
-        $myShelfs = Shelf::where('user_id', $user->id)->orderBy('id', 'desc')->paginate(10);
+        $myShelfs = Shelf::where('user_id', $user->id)->orderBy('id', 'desc')->paginate(5);
 
         // $keyword = $request->input('keyword');
         // $query = Shelf::query();

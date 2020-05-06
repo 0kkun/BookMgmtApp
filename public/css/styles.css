@@ -23,15 +23,13 @@ footer{
   min-height: 450px;
 }
 thead, tbody {
-  display: block;
+
 }
 th, td {
-  width: 100vw;
+
 }
 tbody{
-  overflow-x: hidden;
-  overflow-y: scroll;
-  height: 230px;
+
 }
 .profile{
   min-height: 478px;
@@ -64,12 +62,94 @@ padding: 10px;
   height: 300px;
   margin-left: auto;
   margin-right: auto;
-
 }
+
 
 @media screen and (min-width:781px){
   .search-box {
     max-width: 75%;
   }
 }
-  
+
+
+/* ------------------------------------------------------ */
+body {
+  line-height: 1.25;
+}
+tbody {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 230px;
+}
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  padding: 0;
+  width: 1000px;
+  table-layout: fixed;
+}
+table tr {
+  background-color: #fff;
+  border: 1px solid #bbb;
+  padding: .35em;
+}
+table th,
+table td {
+  padding: 1em 10px 1em 1em;
+  border-right: 1px solid #bbb;
+}
+table thead tr{
+  background-color: gray;
+  color: white;
+}
+.txt{
+  text-align: left;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+    width:100%
+  }
+  table th{
+    /* background-color: #eee; */
+    display: block;
+    border-right: none;
+    background-color: gray;
+    color: white;
+  }
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  table tr {
+    display: block;
+    margin-bottom: .625em;
+  }
+  table td {
+    border-bottom: 1px solid #bbb;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+    position: relative;
+    padding: .625em .625em .625em 4em;
+    border-right: none;
+  }
+  table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    position: absolute;
+    left: 10px;
+  }
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+
+/* ------------------------------------------------------ */

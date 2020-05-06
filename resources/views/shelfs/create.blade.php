@@ -49,10 +49,10 @@
             <div class="col-6 font-weight-bold text-right">
               <p>タイトル：</p>
               <p>カテゴリー：</p>
-              <p>総数：</p>
-              <p class="mb-4 mt-4">完了数：</p>
+              <p>最新巻：</p>
+              <p class="mb-4 mt-4">何巻まで読み終わったか：</p>
               <p class="mb-4">ステータス：</p>
-              <p>評価点数：</p>
+              <p>100点中の評価点：</p>
             </div>
             <div class="col-6">
               <div class="mb-3">{{ $book->title }}</div>
@@ -72,7 +72,7 @@
                     @endforeach
                   </select>
 
-                  <input type="number" class="form-control" name="point" id="point" value="{{ old('point') }}" />
+                  <input type="number" class="form-control" name="point" id="point" value="{{ old('point') }} " />
 
                   <input type="hidden" class="form-control" name="book_id" id="book_id" value="{{ $book_id }}"/>
                   <input type="hidden" class="form-control" name="user_id" id="user_id" value="{{ Auth::user()->id }}"/>

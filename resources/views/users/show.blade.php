@@ -33,27 +33,30 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-6 pt-5">
-          <!-- @if ($is_image)
-            <figure>
-              <img src="/storage/profile_images/{{ Auth::id() }}.jpg" width="280px" height="300px" class="border rounded-lg">
-            </figure>
-          @else -->
           <div class="no-image text-center bg-secondary text-white pt-5 display-4 mb-2 border rounded">
             No image
           </div>
-          <!-- @endif -->
+          <!-- @if ($is_image)
+            <figure>
+              <img src="/storage/profile_images/{{ Auth::id() }}.jpg" width="280px" height="300px" class="border rounded-lg no-image" >
+            </figure>
+          @else
+          <div class="no-image text-center bg-secondary text-white pt-5 display-4 mb-2 border rounded">
+            No image
+          </div>
+          @endif
 
-            <!-- <form method="POST" action="/users" enctype="multipart/form-data">
-              {{ csrf_field() }}
-              <label class="btn btn-primary submit-label">
-                プロフ画像選択
-                <input type="file" name="photo">
-              </label>
-              <label class="btn btn-primary ml-3 submit-label">
-                登録
-                <input type="submit">
-              </label>
-            </form> -->
+          <form method="POST" action="/users" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            <label class="btn btn-primary submit-label">
+              プロフ画像選択
+              <input type="file" name="photo">
+            </label>
+            <label class="btn btn-primary ml-3 submit-label">
+              登録
+              <input type="submit">
+            </label>
+          </form> -->
 
           <div class="pt-3 text-center">ユーザー名：{{ Auth::user()->name }} </div>
           
