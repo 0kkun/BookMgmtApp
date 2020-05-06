@@ -51,7 +51,7 @@ class BooksTableSeeder extends Seeder
             ],
             [
                 'title' => 'ゴルゴ13',
-                'genre' => 11,
+                'genre' => 12,
                 'book_volume' => 196,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -65,14 +65,14 @@ class BooksTableSeeder extends Seeder
             ],
             [
                 'title' => 'こちら葛飾区亀有公園前派出所',
-                'genre' => 200,
+                'genre' => 12,
                 'book_volume' => 11,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'title' => '美味しんぼ',
-                'genre' => 3,
+                'genre' => 14,
                 'book_volume' => 13,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -107,7 +107,7 @@ class BooksTableSeeder extends Seeder
             ],
             [
                 'title' => 'バガボンド',
-                'genre' => 17,
+                'genre' => 18,
                 'book_volume' => 37,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -135,7 +135,7 @@ class BooksTableSeeder extends Seeder
             ],
             [
                 'title' => 'キングダム',
-                'genre' => 17,
+                'genre' => 18,
                 'book_volume' => 57,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),

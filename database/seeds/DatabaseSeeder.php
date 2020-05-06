@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(BooksTableSeeder::class);
 
-        $this->call(ShelfsTableSeeder::class);
+        // $this->call(ShelfsTableSeeder::class);
 
 
 
