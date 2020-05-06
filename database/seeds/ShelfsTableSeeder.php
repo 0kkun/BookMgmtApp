@@ -13,15 +13,15 @@ class ShelfsTableSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create('ja_JP');
+        // $faker = Faker\Factory::create('ja_JP');
         // DB::table('shelfs')->truncate();
 
             DB::table('shelfs')->insert([
                 [
                     'book_id' => 1,
                     'user_id' => 1,
-                    'status' => $faker->numberBetween($min = 1, $max = 3),
-                    'point' => $faker->numberBetween($min = 1, $max = 100),
+                    'status' => 1,
+                    'point' => 50,
                     'finished_amount' => 10,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -29,8 +29,8 @@ class ShelfsTableSeeder extends Seeder
                 [
                     'book_id' => 2,
                     'user_id' => 1,
-                    'status' => $faker->numberBetween($min = 1, $max = 3),
-                    'point' => $faker->numberBetween($min = 1, $max = 100),
+                    'status' => 2,
+                    'point' => 50,
                     'finished_amount' => 10,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -38,8 +38,8 @@ class ShelfsTableSeeder extends Seeder
                 [
                     'book_id' => 3,
                     'user_id' => 1,
-                    'status' => $faker->numberBetween($min = 1, $max = 3),
-                    'point' => $faker->numberBetween($min = 1, $max = 100),
+                    'status' => 2,
+                    'point' => 50,
                     'finished_amount' => 10,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -47,8 +47,8 @@ class ShelfsTableSeeder extends Seeder
                 [
                     'book_id' => 4,
                     'user_id' => 1,
-                    'status' => $faker->numberBetween($min = 1, $max = 3),
-                    'point' => $faker->numberBetween($min = 1, $max = 100),
+                    'status' => 2,
+                    'point' => 50,
                     'finished_amount' => 10,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -56,8 +56,8 @@ class ShelfsTableSeeder extends Seeder
                 [
                     'book_id' => 5,
                     'user_id' => 1,
-                    'status' => $faker->numberBetween($min = 1, $max = 3),
-                    'point' => $faker->numberBetween($min = 1, $max = 100),
+                    'status' => 2,
+                    'point' => 50,
                     'finished_amount' => 10,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -65,8 +65,8 @@ class ShelfsTableSeeder extends Seeder
                 [
                     'book_id' => 6,
                     'user_id' => 1,
-                    'status' => $faker->numberBetween($min = 1, $max = 3),
-                    'point' => $faker->numberBetween($min = 1, $max = 100),
+                    'status' => 2,
+                    'point' => 50,
                     'finished_amount' => 10,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -74,8 +74,8 @@ class ShelfsTableSeeder extends Seeder
                 [
                     'book_id' => 7,
                     'user_id' => 1,
-                    'status' => $faker->numberBetween($min = 1, $max = 3),
-                    'point' => $faker->numberBetween($min = 1, $max = 100),
+                    'status' => 2,
+                    'point' => 50,
                     'finished_amount' => 10,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -83,8 +83,8 @@ class ShelfsTableSeeder extends Seeder
                 [
                     'book_id' => 8,
                     'user_id' => 1,
-                    'status' => $faker->numberBetween($min = 1, $max = 3),
-                    'point' => $faker->numberBetween($min = 1, $max = 100),
+                    'status' => 2,
+                    'point' => 50,
                     'finished_amount' => 10,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -92,8 +92,8 @@ class ShelfsTableSeeder extends Seeder
                 [
                     'book_id' => 9,
                     'user_id' => 1,
-                    'status' => $faker->numberBetween($min = 1, $max = 3),
-                    'point' => $faker->numberBetween($min = 1, $max = 100),
+                    'status' => 2,
+                    'point' => 50,
                     'finished_amount' => 10,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
@@ -101,8 +101,8 @@ class ShelfsTableSeeder extends Seeder
                 [
                     'book_id' => 10,
                     'user_id' => 1,
-                    'status' => $faker->numberBetween($min = 1, $max = 3),
-                    'point' => $faker->numberBetween($min = 1, $max = 100),
+                    'status' => 2,
+                    'point' => 50,
                     'finished_amount' => 10,
                     'created_at' => Carbon::now(),
                     'updated_at' => Carbon::now(),
