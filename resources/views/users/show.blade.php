@@ -55,7 +55,7 @@
               </label>
             </form> -->
 
-          <div class="pt-3 pl-5">ユーザー名：{{ Auth::user()->name }} </div>
+          <div class="pt-3 text-center">ユーザー名：{{ Auth::user()->name }} </div>
           
             <!-- <div class="pt-4 text-primary">フォロー：８ </div>
             <div class="text-primary">フォワー：16 </div> -->
