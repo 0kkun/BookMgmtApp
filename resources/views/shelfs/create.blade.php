@@ -27,8 +27,19 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-3 text-center">
-          <img src="img/dragonball.jpg" class="book-img mb-5">
+          @if ($is_image)
+            <figure>
+              <img src="/storage/book_images/{{ $book->id }}.jpg" width="250px" height="300px" class="border rounded">
+            </figure>
+          @else
+            <div class="no-image text-center bg-secondary text-white pt-5 display-4 mb-2 border rounded">
+              No image
+            </div>
+          @endif
         </div>
+
+
+
         <div class="col-sm-9">
           <div class="row">
             <div class="col-6 font-weight-bold text-right">

@@ -41,10 +41,15 @@ class ShelfController extends Controller
     // shelf新規作成画面表示
     public function create(Book $book)
     {
+        $is_image = false;
+        if (Storage::disk('local')->exists('public/book_images/' . $book->id . '.jpg')) {
+            $is_image = true;
+        }
 
         return view('shelfs/create', [
             'book_id' => $book->id,
             'book' => $book,
+            'is_image' => $is_image,
         ]);
     }
 
